@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        maven { url = 'https://files.minecraftforge.net/maven' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = '0.2.0'
+group = 'local.brokenconnections'
+archivesBaseName = 'broken-connections'
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava.options.encoding = 'UTF-8'
+
+minecraft {
+    version = '1.12.2-14.23.5.2847'
+    mappings = 'stable_39'
+    runDir = 'run'
+}
+
+task roadChecks(type: JavaExec, dependsOn: testClasses) {
+    classpath = sourceSets.test.runtimeClasspath
+    main = 'local.structureroads.RoadLogicChecks'
+}
+check.dependsOn roadChecks
+
+processResources {
+    inputs.property 'version', project.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand version: project.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

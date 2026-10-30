@@ -1,0 +1,10 @@
+[
+  {
+    "modid": "brokenconnections",
+    "name": "Broken Connections",
+    "description": "Local, terrain-aware roads growing out of settlements. Connect a nearby building, otherwise fade into an abandoned trail. No global road network or map dependency.",
+    "version": "${version}",
+    "mcversion": "1.12.2",
+    "modProperties": { "iconItem": "minecraft:gravel" }
+  }
+]
