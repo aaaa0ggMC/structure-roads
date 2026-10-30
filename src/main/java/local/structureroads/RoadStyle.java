@@ -8,7 +8,7 @@ final class RoadStyle {
         return v ^ (v >>> 31);
     }
     static int direction(long seed, String id, int slot) {
-        return (int) Math.floorMod(mix(seed ^ id.hashCode()), 8) + slot * 3 & 7;
+        return ((int) Math.floorMod(mix(seed ^ id.hashCode()), 8) + slot * 3) & 7;
     }
     static int length(long seed, String id, int slot, int min, int max) {
         return min + (int) Math.floorMod(mix(seed ^ id.hashCode() ^ (slot * 7151L)), max - min + 1);

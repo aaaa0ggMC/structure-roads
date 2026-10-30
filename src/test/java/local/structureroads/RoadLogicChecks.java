@@ -116,7 +116,7 @@ public final class RoadLogicChecks {
         Site street = new Site("nbt:Village:envelope:street:1", new StructureBoundingBox(-28, 63, -1, 28, 66, 1), false, false);
         street.protectEnvelope = false; data.site(street);
         require(!data.protectedAt(20, 64, 0), "village street is not blocked by entire settlement envelope");
-        require(data.protectedAt(4, 64, 12), "village houses/farms still protected");
+        require(data.protectedAt(10, 64, 18), "village houses/farms still protected");
         require(data.villageStreetAt(20, 64, 0) && !data.villageStreetAt(20, 64, 8), "desert/wood street allowance stays inside registered path");
         Site exitRoundTrip = Site.read(envelope.write());
         require(exitRoundTrip != null && !exitRoundTrip.protectEnvelope && exitRoundTrip.exits.length == 4,
