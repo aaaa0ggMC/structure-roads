@@ -28,6 +28,10 @@ task roadChecks(type: JavaExec, dependsOn: testClasses) {
 }
 check.dependsOn roadChecks
 
+jar {
+    finalizedBy 'reobfJar'
+}
+
 processResources {
     inputs.property 'version', project.version
     from(sourceSets.main.resources.srcDirs) {
